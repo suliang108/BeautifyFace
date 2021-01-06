@@ -28,7 +28,7 @@ namespace Seagull.BeautifyFace
 
         private void SetTitle()
         {
-            this.tabPage1.Text = "我的主页";
+            this.tpCenter.Text = "我的主页";
             //this.tabPage2.Text = "我的配置";
         }
 
@@ -81,7 +81,13 @@ namespace Seagull.BeautifyFace
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!Sunny.UI.UIMessageBox.ShowAsk("您确定退出系统吗？"))
+            {
+                e.Cancel = true;
+                return;
+            }
             DisConnect();//关闭并释放
+            e.Cancel = false;
         }
 
         private void btnPic_Click(object sender, EventArgs e)
@@ -168,6 +174,8 @@ namespace Seagull.BeautifyFace
             var mainImageFilePath = @"C:\Users\Administrator\Desktop\temp\图片\002.jpg";
             var mergeImageFilePath = @"C:\Users\Administrator\Desktop\temp\图片\靓女.jpg";
 
+            if (!IsHasPictures())
+                return;
             mainImageFilePath = (string)pbMe.Tag;
             mergeImageFilePath = (string)pbBeforeMerge.Tag;
 
@@ -198,12 +206,43 @@ namespace Seagull.BeautifyFace
             try
             {
                 var fileName = (string)pbAfterMerge.Tag;
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    Sunny.UI.UIMessageBox.Show("您尚未融合靓图，需[启动摄像头->拍照->上传融合->确认融合->再导出即可]^_^");
+                    return;
+                }
                 Process.Start(fileName);
             }
             catch (Exception ex)
             {
             
             }
+        }
+
+        private void btnActivite_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 检查是否拍照到主图
+        /// </summary>
+        /// <returns></returns>
+        private bool IsHasPictures()
+        {
+            var mainImageFilePath = (string)pbMe.Tag;
+            if (string.IsNullOrEmpty(mainImageFilePath))
+            {
+                Sunny.UI.UIMessageBox.Show("需先[启动摄像头]->[拍照] 生成主图哦^_^");
+                return false;
+            }
+            var mergeImageFilePath = (string)pbBeforeMerge.Tag;
+            if (string.IsNullOrEmpty(mergeImageFilePath))
+            {
+                Sunny.UI.UIMessageBox.Show("需再[上传融合图]噢，然后[确认融合]即可^_^");
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -30,7 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.uiTabControlMenu1 = new Sunny.UI.UITabControlMenu();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpCenter = new System.Windows.Forms.TabPage();
+            this.btnExport = new Sunny.UI.UIButton();
+            this.txtMsg = new Sunny.UI.UITextBox();
+            this.btnMerge = new Sunny.UI.UIButton();
+            this.pbAfterMerge = new AForge.Controls.PictureBox();
             this.btnUpload = new Sunny.UI.UIButton();
             this.pbBeforeMerge = new AForge.Controls.PictureBox();
             this.pbMe = new AForge.Controls.PictureBox();
@@ -40,21 +44,24 @@
             this.btnCut = new Sunny.UI.UIButton();
             this.btnConnect = new Sunny.UI.UIButton();
             this.vispShoot = new AForge.Controls.VideoSourcePlayer();
-            this.pbAfterMerge = new AForge.Controls.PictureBox();
-            this.btnMerge = new Sunny.UI.UIButton();
-            this.txtMsg = new Sunny.UI.UITextBox();
-            this.btnExport = new Sunny.UI.UIButton();
+            this.tpConfig = new System.Windows.Forms.TabPage();
+            this.btnActivite = new Sunny.UI.UIButton();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.txtSerialNumber = new Sunny.UI.UITextBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiTabControlMenu1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tpCenter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAfterMerge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBeforeMerge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAfterMerge)).BeginInit();
+            this.tpConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiTabControlMenu1
             // 
             this.uiTabControlMenu1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.uiTabControlMenu1.Controls.Add(this.tabPage1);
+            this.uiTabControlMenu1.Controls.Add(this.tpCenter);
+            this.uiTabControlMenu1.Controls.Add(this.tpConfig);
             this.uiTabControlMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiTabControlMenu1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControlMenu1.Font = new System.Drawing.Font("微软雅黑", 12F);
@@ -67,27 +74,79 @@
             this.uiTabControlMenu1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControlMenu1.TabIndex = 0;
             // 
-            // tabPage1
+            // tpCenter
             // 
-            this.tabPage1.Controls.Add(this.btnExport);
-            this.tabPage1.Controls.Add(this.txtMsg);
-            this.tabPage1.Controls.Add(this.btnMerge);
-            this.tabPage1.Controls.Add(this.pbAfterMerge);
-            this.tabPage1.Controls.Add(this.btnUpload);
-            this.tabPage1.Controls.Add(this.pbBeforeMerge);
-            this.tabPage1.Controls.Add(this.pbMe);
-            this.tabPage1.Controls.Add(this.cboResolution);
-            this.tabPage1.Controls.Add(this.cboVideo);
-            this.tabPage1.Controls.Add(this.btnPic);
-            this.tabPage1.Controls.Add(this.btnCut);
-            this.tabPage1.Controls.Add(this.btnConnect);
-            this.tabPage1.Controls.Add(this.vispShoot);
-            this.tabPage1.Location = new System.Drawing.Point(201, 0);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1088, 633);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "我的主页";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpCenter.Controls.Add(this.btnExport);
+            this.tpCenter.Controls.Add(this.txtMsg);
+            this.tpCenter.Controls.Add(this.btnMerge);
+            this.tpCenter.Controls.Add(this.pbAfterMerge);
+            this.tpCenter.Controls.Add(this.btnUpload);
+            this.tpCenter.Controls.Add(this.pbBeforeMerge);
+            this.tpCenter.Controls.Add(this.pbMe);
+            this.tpCenter.Controls.Add(this.cboResolution);
+            this.tpCenter.Controls.Add(this.cboVideo);
+            this.tpCenter.Controls.Add(this.btnPic);
+            this.tpCenter.Controls.Add(this.btnCut);
+            this.tpCenter.Controls.Add(this.btnConnect);
+            this.tpCenter.Controls.Add(this.vispShoot);
+            this.tpCenter.Location = new System.Drawing.Point(201, 0);
+            this.tpCenter.Name = "tpCenter";
+            this.tpCenter.Size = new System.Drawing.Size(1088, 633);
+            this.tpCenter.TabIndex = 0;
+            this.tpCenter.Text = "我的主页";
+            this.tpCenter.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnExport.Location = new System.Drawing.Point(402, 468);
+            this.btnExport.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(108, 38);
+            this.btnExport.TabIndex = 14;
+            this.btnExport.Text = "导出融合图";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // txtMsg
+            // 
+            this.txtMsg.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMsg.FillColor = System.Drawing.Color.White;
+            this.txtMsg.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtMsg.Location = new System.Drawing.Point(4, 522);
+            this.txtMsg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMsg.Maximum = 2147483647D;
+            this.txtMsg.Minimum = -2147483648D;
+            this.txtMsg.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtMsg.Multiline = true;
+            this.txtMsg.Name = "txtMsg";
+            this.txtMsg.Padding = new System.Windows.Forms.Padding(5);
+            this.txtMsg.ReadOnly = true;
+            this.txtMsg.Size = new System.Drawing.Size(505, 106);
+            this.txtMsg.TabIndex = 13;
+            // 
+            // btnMerge
+            // 
+            this.btnMerge.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMerge.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnMerge.Location = new System.Drawing.Point(402, 420);
+            this.btnMerge.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(108, 38);
+            this.btnMerge.TabIndex = 12;
+            this.btnMerge.Text = "确认融合";
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
+            // pbAfterMerge
+            // 
+            this.pbAfterMerge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbAfterMerge.Image = null;
+            this.pbAfterMerge.Location = new System.Drawing.Point(516, 226);
+            this.pbAfterMerge.Name = "pbAfterMerge";
+            this.pbAfterMerge.Size = new System.Drawing.Size(535, 402);
+            this.pbAfterMerge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAfterMerge.TabIndex = 11;
+            this.pbAfterMerge.TabStop = false;
             // 
             // btnUpload
             // 
@@ -107,7 +166,7 @@
             this.pbBeforeMerge.Image = null;
             this.pbBeforeMerge.Location = new System.Drawing.Point(784, 3);
             this.pbBeforeMerge.Name = "pbBeforeMerge";
-            this.pbBeforeMerge.Size = new System.Drawing.Size(267, 175);
+            this.pbBeforeMerge.Size = new System.Drawing.Size(267, 217);
             this.pbBeforeMerge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBeforeMerge.TabIndex = 9;
             this.pbBeforeMerge.TabStop = false;
@@ -117,7 +176,7 @@
             this.pbMe.Image = null;
             this.pbMe.Location = new System.Drawing.Point(516, 3);
             this.pbMe.Name = "pbMe";
-            this.pbMe.Size = new System.Drawing.Size(262, 175);
+            this.pbMe.Size = new System.Drawing.Size(262, 217);
             this.pbMe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMe.TabIndex = 8;
             this.pbMe.TabStop = false;
@@ -196,57 +255,70 @@
             this.vispShoot.Text = "videoSourcePlayer1";
             this.vispShoot.VideoSource = null;
             // 
-            // pbAfterMerge
+            // tpConfig
             // 
-            this.pbAfterMerge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbAfterMerge.Image = null;
-            this.pbAfterMerge.Location = new System.Drawing.Point(516, 184);
-            this.pbAfterMerge.Name = "pbAfterMerge";
-            this.pbAfterMerge.Size = new System.Drawing.Size(535, 366);
-            this.pbAfterMerge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAfterMerge.TabIndex = 11;
-            this.pbAfterMerge.TabStop = false;
+            this.tpConfig.Controls.Add(this.uiLabel2);
+            this.tpConfig.Controls.Add(this.btnActivite);
+            this.tpConfig.Controls.Add(this.uiLabel1);
+            this.tpConfig.Controls.Add(this.txtSerialNumber);
+            this.tpConfig.ForeColor = System.Drawing.Color.Gray;
+            this.tpConfig.Location = new System.Drawing.Point(201, 0);
+            this.tpConfig.Name = "tpConfig";
+            this.tpConfig.Size = new System.Drawing.Size(1088, 633);
+            this.tpConfig.TabIndex = 1;
+            this.tpConfig.Text = "我的配置";
+            this.tpConfig.UseVisualStyleBackColor = true;
             // 
-            // btnMerge
+            // btnActivite
             // 
-            this.btnMerge.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMerge.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.btnMerge.Location = new System.Drawing.Point(402, 420);
-            this.btnMerge.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(108, 38);
-            this.btnMerge.TabIndex = 12;
-            this.btnMerge.Text = "确认融合";
-            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            this.btnActivite.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActivite.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnActivite.Location = new System.Drawing.Point(444, 30);
+            this.btnActivite.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnActivite.Name = "btnActivite";
+            this.btnActivite.Size = new System.Drawing.Size(100, 35);
+            this.btnActivite.TabIndex = 2;
+            this.btnActivite.Text = "激活";
+            this.btnActivite.Click += new System.EventHandler(this.btnActivite_Click);
             // 
-            // txtMsg
+            // uiLabel1
             // 
-            this.txtMsg.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMsg.FillColor = System.Drawing.Color.White;
-            this.txtMsg.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtMsg.Location = new System.Drawing.Point(4, 522);
-            this.txtMsg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMsg.Maximum = 2147483647D;
-            this.txtMsg.Minimum = -2147483648D;
-            this.txtMsg.MinimumSize = new System.Drawing.Size(1, 1);
-            this.txtMsg.Multiline = true;
-            this.txtMsg.Name = "txtMsg";
-            this.txtMsg.Padding = new System.Windows.Forms.Padding(5);
-            this.txtMsg.ReadOnly = true;
-            this.txtMsg.Size = new System.Drawing.Size(505, 106);
-            this.txtMsg.TabIndex = 13;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel1.Location = new System.Drawing.Point(31, 36);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(110, 23);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 1;
+            this.uiLabel1.Text = "我的注册码：";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnExport
+            // txtSerialNumber
             // 
-            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.btnExport.Location = new System.Drawing.Point(402, 468);
-            this.btnExport.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(108, 38);
-            this.btnExport.TabIndex = 14;
-            this.btnExport.Text = "导出融合图";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.txtSerialNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSerialNumber.FillColor = System.Drawing.Color.White;
+            this.txtSerialNumber.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtSerialNumber.Location = new System.Drawing.Point(148, 36);
+            this.txtSerialNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSerialNumber.Maximum = 2147483647D;
+            this.txtSerialNumber.Minimum = -2147483648D;
+            this.txtSerialNumber.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtSerialNumber.Name = "txtSerialNumber";
+            this.txtSerialNumber.Padding = new System.Windows.Forms.Padding(5);
+            this.txtSerialNumber.Size = new System.Drawing.Size(268, 29);
+            this.txtSerialNumber.TabIndex = 0;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.Gray;
+            this.uiLabel2.Location = new System.Drawing.Point(12, 605);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(279, 23);
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel2.TabIndex = 3;
+            this.uiLabel2.Text = "© 2021. Seagull.版权所有";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmMain
             // 
@@ -260,10 +332,11 @@
             this.Text = "Seagull.BeautifyFace";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.uiTabControlMenu1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tpCenter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAfterMerge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBeforeMerge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAfterMerge)).EndInit();
+            this.tpConfig.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -271,7 +344,7 @@
         #endregion
 
         private Sunny.UI.UITabControlMenu uiTabControlMenu1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpCenter;
         private Sunny.UI.UIButton btnConnect;
         private AForge.Controls.VideoSourcePlayer vispShoot;
         private Sunny.UI.UIButton btnPic;
@@ -285,6 +358,11 @@
         private Sunny.UI.UIButton btnMerge;
         private Sunny.UI.UITextBox txtMsg;
         private Sunny.UI.UIButton btnExport;
+        private System.Windows.Forms.TabPage tpConfig;
+        private Sunny.UI.UIButton btnActivite;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UITextBox txtSerialNumber;
+        private Sunny.UI.UILabel uiLabel2;
     }
 }
 

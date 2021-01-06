@@ -24,17 +24,20 @@ namespace Seagull.Services
             try
             {
                 //用来存储接口参数值
-                Dictionary<string, object> verifyPostParameters = new Dictionary<string, object>();
+                //Dictionary<string, object> verifyPostParameters = new Dictionary<string, object>();
+
+                Dictionary<string, object> verifyPostParameters = InitParams();
+
                 //var key = "JJ78KFXevml97OheVMKfzoanEJQsmzfb";//注册后得到的key
                 //var secret = "CBXHrGC7FcmR2YwUesVn4BS9M3cFBpPw";//注册后得到的secret
 
-                var key = "Fa-KvgBUsg0ZV7STCfAFOw7RWTn1FccB";//注册后得到的key
-                var secret = "yVnDEgWQu3cam6yGQ2abOleJdevV0I0d";//注册后得到的secret
+                //var key = "Fa-KvgBUsg0ZV7STCfAFOw7RWTn1FccB";//注册后得到的key
+                //var secret = "yVnDEgWQu3cam6yGQ2abOleJdevV0I0d";//注册后得到的secret
 
-                //接口必须参数一
-                verifyPostParameters.Add("api_key", key);
-                //接口必须参数二
-                verifyPostParameters.Add("api_secret", secret);
+                ////接口必须参数一
+                //verifyPostParameters.Add("api_key", key);
+                ////接口必须参数二
+                //verifyPostParameters.Add("api_secret", secret);
                 //（模板图）
                 Bitmap bmp = new Bitmap(tempImg); // 图片地址
                 byte[] fileImage;
@@ -86,6 +89,31 @@ namespace Seagull.Services
                 string retString = myStreamReader.ReadToEnd();
                 return retString;
             }
+        }
+
+        private Dictionary<string, object> InitParams()
+        { 
+            var verifyPostParameters = new Dictionary<string, object>();
+
+            var key = "Fa-KvgBUsg0ZV7STCfAFOw7RWTn1FccB";//注册后得到的key
+            var secret = "yVnDEgWQu3cam6yGQ2abOleJdevV0I0d";//注册后得到的secret
+
+            //接口必须参数一
+            verifyPostParameters.Add("api_key", key);
+            //接口必须参数二
+            verifyPostParameters.Add("api_secret", secret);
+            /*
+             融合比例，范围 [0,100]。数字越大融合结果包含越多融合图 (merge_url, merge_file, merge_base64 代表图片) 特征。
+             默认值为50
+             */
+            verifyPostParameters.Add("merge_rate", 50);
+            /*
+             五官融合比例，范围 [0,100]。主要调节融合结果图中人像五官相对位置，数字越小融合图 (merge_url, merge_file, merge_base64 代表图片)中人像五官相对更集中 。
+             默认值为45
+             */
+            verifyPostParameters.Add("feature_rate", 45);
+
+            return verifyPostParameters;
         }
     }
 }

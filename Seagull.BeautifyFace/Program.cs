@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Seagull.BeautifyFace.Utils;
+using Seagull.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,14 @@ namespace Seagull.BeautifyFace
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            try
+            {
+                Encrytor.Check();
+            }
+            catch (Exception ex)
+            {
+                MyFileHelper.Write(ex.ToString());
+            }
         }
     }
 }
